@@ -21,12 +21,7 @@
 <#@ include file="EF.Utility.CS.ttinclude"#>
 <#@ output extension=".cs"#>
 <#
-string autoCsdlPath = string.Empty;
-foreach (var edmx in System.IO.Directory.GetFiles(Host.ResolvePath(String.Empty), "*.edmx"))
-{
-	autoCsdlPath = System.IO.Path.GetFileName(edmx);
-	break;
-}
+string autoCsdlPath = System.IO.Path.ChangeExtension(Host.TemplateFile, "edmx");
 UserSettings userSettings =
 		new UserSettings
 		{
